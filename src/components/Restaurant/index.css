@@ -1,0 +1,33 @@
+.heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 50px;
+}
+.fixed-container {
+  position: sticky;
+  top: 0;
+  background-color: #fff;
+}
+.restaurant-name {
+  padding: 0px;
+  margin: 0px;
+}
+.order-container {
+  position: relative;
+  display: inline-block;
+}
+.order-count {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 20px;
+  width: 20px;
+  background-color: red;
+  color: #fff;
+  font-size: 12px;
+  border-radius: 50%;
+  position: absolute;
+  top: -5px;
+  right: -5px;
+}

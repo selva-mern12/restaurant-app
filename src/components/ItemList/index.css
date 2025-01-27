@@ -1,0 +1,112 @@
+.item-list {
+  list-style-type: none;
+  margin: 0px;
+  padding: 0px;
+}
+::-webkit-scrollbar {
+  display: none;
+}
+.item-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0px 0px 3px #00000050;
+  margin: 15px;
+  border-radius: 5px;
+  font-family: Roboto;
+  padding: 10px;
+  border: #00000050 1px solid;
+}
+.left-item-container {
+  display: flex;
+  width: 60%;
+  align-items: center;
+}
+.right-item-container {
+  display: flex;
+  align-items: center;
+}
+.non-veg-mark {
+  height: 25px;
+  width: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: #f44336 2px solid;
+  align-self: flex-start;
+  margin-right: 10px;
+  margin-top: 4px;
+}
+.non-veg {
+  height: 15px;
+  width: 15px;
+  border-radius: 50%;
+  background-color: #f44336;
+}
+.count-container {
+  display: inline-flex;
+  background-color: #f44336;
+  justify-content: space-around;
+  align-items: center;
+  height: 40px;
+  width: 75px;
+  border-radius: 20px;
+  color: #fff;
+}
+.in-de-button {
+  background-color: transparent;
+  border: none;
+  color: #fff;
+  font-size: 20px;
+  cursor: pointer;
+}
+.count {
+  padding: 0px;
+  margin: 0px;
+}
+
+.veg-mark {
+  border: #8bc34a 2px solid;
+}
+.veg {
+  background-color: #8bc34a;
+}
+.calories {
+  color: #ffa500;
+  font-family: Roboto;
+  font-size: 20px;
+  margin-right: 250px;
+  font-weight: bold;
+}
+.item-img {
+  height: 150px;
+  width: 150px;
+  border-radius: 5px;
+  box-shadow: 0px 0px 2px #00000050;
+}
+.dish-name {
+  padding: 0px;
+  margin: 0px;
+  font-size: 25px;
+}
+.dish-price {
+  color: #333333;
+  font-weight: bold;
+  font-size: 18px;
+  padding: 0px;
+  margin: 0px;
+  margin-top: 7px;
+}
+.dish-description {
+  color: #00000070;
+  font-weight: 400;
+  font-size: 17px;
+  padding: 0px;
+  margin: 7px 0px;
+}
+.not-available {
+  color: #f44336;
+}
+.customization{
+  color: blueviolet;
+}
