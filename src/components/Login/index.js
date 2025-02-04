@@ -51,6 +51,13 @@ class Login extends Component {
     const {username, password, errorMsg, isShowPassword} = this.state
     return (
       <div className="login-bg">
+        <div className="small-device">
+          <p>
+            Sorry for the Inconvenience
+            <br /> Please
+          </p>
+          <h1 className="small-device-heade">Open your Laptop/PC</h1>
+        </div>
         <div className="login-page">
           <h1 className="login-heading">Welcome To Our Restaurant</h1>
           <div className="img-login-container">

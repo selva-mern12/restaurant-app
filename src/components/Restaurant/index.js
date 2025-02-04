@@ -100,7 +100,7 @@ class Restaurant extends Component {
     )?.categoryDishes
     console.log(restaurantDetails)
     return (
-      <div>
+      <div className="main-container">
         <div className="fixed-container">
           <Header />
           <TableMenuList

@@ -49,61 +49,65 @@ const ItemList = props => {
                 <p className={dishType === 1 ? 'non-veg' : 'non-veg veg'}> </p>
               </div>
               <div>
-                <h3 className="dish-name" data-testid={`dish-name-${dishId}`}>
-                  {dishName}
-                </h3>
-                <p
-                  className="dish-price"
-                  data-testid={`${dishCurrency} ${dishPrice}`}
-                >{`${dishCurrency} ${dishPrice}`}</p>
-                <p className="dish-description">{dishDescription}</p>
-                {dishAvailability ? (
-                  <div>
-                    <div className="count-container">
+                <div className="dishdetails-container">
+                  <h3 className="dish-name" data-testid={`dish-name-${dishId}`}>
+                    {dishName}
+                  </h3>
+                  <p
+                    className="dish-price"
+                    data-testid={`${dishCurrency} ${dishPrice}`}
+                  >{`${dishCurrency} ${dishPrice}`}</p>
+                  <p className="dish-description">{dishDescription}</p>
+                </div>
+                <div className="buttons-container">
+                  {dishAvailability ? (
+                    <div>
+                      <div className="count-container">
+                        <button
+                          type="button"
+                          className="in-de-button"
+                          onClick={() =>
+                            setQuantity(prevQuantity =>
+                              prevQuantity < 1 ? 0 : prevQuantity - 1,
+                            )
+                          }
+                        >
+                          -
+                        </button>
+                        <p
+                          className="count"
+                          data-testid={`item-quantity-${dishId}`}
+                        >
+                          {quantity || 0}
+                        </p>
+                        <button
+                          type="button"
+                          className="in-de-button"
+                          onClick={() =>
+                            setQuantity(prevQuantity => prevQuantity + 1)
+                          }
+                          data-testid={`increment-quantity-${dishId}`}
+                        >
+                          +
+                        </button>
+                      </div>
                       <button
                         type="button"
-                        className="in-de-button"
-                        onClick={() =>
-                          setQuantity(prevQuantity =>
-                            prevQuantity < 1 ? 0 : prevQuantity - 1,
-                          )
-                        }
+                        className="login-button"
+                        onClick={addToCart}
+                        data-testid={`add-to-cart-${dishId}`}
                       >
-                        -
+                        ADD TO CART
                       </button>
-                      <p
-                        className="count"
-                        data-testid={`item-quantity-${dishId}`}
-                      >
-                        {quantity || 0}
-                      </p>
-                      <button
-                        type="button"
-                        className="in-de-button"
-                        onClick={() =>
-                          setQuantity(prevQuantity => prevQuantity + 1)
-                        }
-                        data-testid={`increment-quantity-${dishId}`}
-                      >
-                        +
-                      </button>
+                      <span className="add-cart-msg">{addCart}</span>
                     </div>
-                    <button
-                      type="button"
-                      className="login-button"
-                      onClick={addToCart}
-                      data-testid={`add-to-cart-${dishId}`}
-                    >
-                      ADD TO CART
-                    </button>
-                    <span className="add-cart-msg">{addCart}</span>
-                  </div>
-                ) : (
-                  <p className="not-available">Not available</p>
-                )}
-                {addonCat.length > 0 && (
-                  <p className="customization">Customizations available</p>
-                )}
+                  ) : (
+                    <p className="not-available">Not available</p>
+                  )}
+                  {addonCat.length > 0 && (
+                    <p className="customization">Customizations available</p>
+                  )}
+                </div>
               </div>
             </div>
             <div className="right-item-container">

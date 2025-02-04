@@ -78,12 +78,6 @@
   margin-right: 250px;
   font-weight: bold;
 }
-@media (max-width: 769px){
-  .calories{
-    margin-right: 20px;
-    margin-left: 20px;
-  }
-}
 .item-img {
   height: 150px;
   width: 150px;
@@ -120,4 +114,20 @@
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   color: #ff7300;
   animation: fade 5s ease-in-out;
+}
+
+@media (max-width: 769px) {
+  .calories {
+    margin-right: 20px;
+    margin-left: 20px;
+  }
+  .dishdetails-container {
+    order: 2;
+  }
+  .buttons-container {
+    order: 3;
+  }
+  right-item-container {
+    order: 1;
+  }
 }

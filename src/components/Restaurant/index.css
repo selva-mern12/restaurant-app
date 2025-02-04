@@ -1,3 +1,6 @@
+.main-container{
+  width: 100vw;
+}
 .heading {
   display: flex;
   justify-content: space-between;
@@ -9,11 +12,21 @@
   position: sticky;
   top: 0;
   background-color: #fff;
+  width: 100vw;
 }
 .restaurant-name {
   padding: 0px;
   margin: 0px;
   font-family: Roboto;
+}
+@media (max-width: 769px) {
+  .heading {
+    width: 100vw;
+    padding: 20px 50px;
+  }
+  .restaurant-name {
+    font-size: 15px;
+  }
 }
 .header-order-logout {
   display: flex;
