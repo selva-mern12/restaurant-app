@@ -1,5 +1,7 @@
 import {Component} from 'react'
-import {AiOutlineShoppingCart} from 'react-icons/ai'
+import {Redirect} from 'react-router-dom'
+import Cookies from 'js-cookie'
+import Header from '../Header'
 import TableMenuList from '../TableMenuList'
 import ItemList from '../ItemList'
 
@@ -17,8 +19,6 @@ class Restaurant extends Component {
     restaurantDetails: {},
     tableMenu: '',
     restaurantPageStatus: pageStatus.initial,
-    tableMenuList: [],
-    order: [],
   }
 
   componentDidMount() {
@@ -57,7 +57,6 @@ class Restaurant extends Component {
             dishAvailability: dish.dish_Availability,
             dishType: dish.dish_Type,
             nextUrl: dish.nexturl,
-            noOfDish: 0,
             addonCat: dish.addonCat.map(addOnCat => ({
               addonCategory: addOnCat.addon_category,
               addonCategory_id: addOnCat.addon_category_id,
@@ -82,7 +81,6 @@ class Restaurant extends Component {
         restaurantDetails: restaurantUpdatedData,
         tableMenu: restaurantUpdatedData.tableMenuList[0].menuCategory,
         restaurantPageStatus: pageStatus.success,
-        tableMenuList: restaurantUpdatedData.tableMenuList,
       })
     } else {
       this.setState({restaurantPageStatus: pageStatus.failure})
@@ -91,58 +89,20 @@ class Restaurant extends Component {
 
   selectTableMenu = table => this.setState({tableMenu: table})
 
-  updateOrder = (action, dishIndex, dishName) => {
-    const {tableMenu, tableMenuList} = this.state
-    const updatedMenuList = [...tableMenuList]
-    const categories = updatedMenuList.find(
-      item => item.menuCategory === tableMenu,
-    )
-    const dish = categories.categoryDishes[dishIndex]
-
-    if (action === 'decrease') {
-      if (dish.noOfDish > 1) {
-        dish.noOfDish -= 1
-      } else {
-        dish.noOfDish = 0
-        this.setState(prevState => ({
-          order: prevState.order.filter(item => item !== dishName),
-        }))
-      }
-    } else {
-      dish.noOfDish += 1
-      this.setState(prevState => ({
-        order: prevState.order.includes(dishName)
-          ? [...prevState.order]
-          : [...prevState.order, dishName],
-      }))
-    }
-    this.setState({tableMenuList: updatedMenuList})
-  }
-
   render() {
-    const {
-      restaurantDetails,
-      tableMenu,
-      restaurantPageStatus,
-      tableMenuList,
-      order,
-    } = this.state
-    const itemList = tableMenuList?.find(
+    const jwtToken = Cookies.get('jwt_token')
+    if (!jwtToken) {
+      return <Redirect to="/login" />
+    }
+    const {restaurantDetails, tableMenu, restaurantPageStatus} = this.state
+    const itemList = restaurantDetails?.tableMenuList?.find(
       item => item.menuCategory === tableMenu,
     )?.categoryDishes
+    console.log(restaurantDetails)
     return (
       <div>
         <div className="fixed-container">
-          <div className="heading">
-            <h1 className="restaurant-name">
-              {restaurantDetails.restaurantName}
-            </h1>
-            <p className="order-container">
-              My Orders
-              <AiOutlineShoppingCart size={35} />{' '}
-              <span className="order-count">{order.length}</span>
-            </p>
-          </div>
+          <Header />
           <TableMenuList
             tableList={restaurantDetails.tableMenuList}
             tableMenu={tableMenu}
@@ -150,7 +110,11 @@ class Restaurant extends Component {
             restaurantPageStatus={restaurantPageStatus}
           />
         </div>
-        <ItemList menuList={itemList} updateOrder={this.updateOrder} />
+        <ul>
+          {itemList?.map(item => (
+            <ItemList key={item.dishId} tableDetails={item} />
+          ))}
+        </ul>
       </div>
     )
   }

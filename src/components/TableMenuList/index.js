@@ -6,7 +6,7 @@ const TableMenuList = props => {
     <ul className="table-menu-list">
       {tableList &&
         tableList.map(item => (
-          <li key={item.menuCategoryId}>
+          <li key={item.tableMenu} data-testid={`menu-category-${tableMenu}`}>
             <button
               type="button"
               className={

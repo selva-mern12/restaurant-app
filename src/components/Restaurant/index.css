@@ -2,7 +2,8 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px 50px;
+  padding: 20px 50px;
+  background-color: #fff;
 }
 .fixed-container {
   position: sticky;
@@ -12,11 +13,17 @@
 .restaurant-name {
   padding: 0px;
   margin: 0px;
+  font-family: Roboto;
+}
+.header-order-logout {
+  display: flex;
+  align-items: center;
 }
 .order-container {
   position: relative;
   display: inline-block;
 }
+
 .order-count {
   display: flex;
   justify-content: center;
